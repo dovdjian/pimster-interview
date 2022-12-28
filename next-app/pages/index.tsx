@@ -24,6 +24,7 @@ export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
   await apolloClient.query({ query: LAUNCH_CARD_QUERY });
+  //await apolloClient.query({ query: MODAL_QUERY });
 
   return {
     props: {},
