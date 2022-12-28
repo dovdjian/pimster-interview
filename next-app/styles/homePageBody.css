@@ -1,0 +1,32 @@
+.launch-cards {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.launch-card {
+  display: flex;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  margin: 10px;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #c0c0c0;
+}
+
+.launch-card img {
+  display: flex;
+  margin: auto;
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.launch-card p:first-child {
+  float: left;
+}
+
+.launch-card p:last-child {
+  float: right;
+}

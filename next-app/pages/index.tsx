@@ -1,32 +1,13 @@
-import { gql, useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client";
 import type { GetStaticProps, NextPage } from "next";
 import HomePageBody from "../components/body/homePageBody";
 import HomePageHead from "../components/head/homePageHead";
 import { initializeApollo } from "../lib/apolloClient";
+import LAUNCH_CARD_QUERY from "../lib/queries/launchCardQuery";
 import styles from "../styles/Home.module.css";
 
-const EXEMPLE_QUERY = gql`
-  query exempleQuery {
-    launchesPast {
-      mission_name
-    }
-  }
-`;
-
-const NEW_QUERY = gql`
-  query newQuery {
-    launchesPast(limit: 8) {
-      mission_name
-      launch_date_local
-      rocket {
-        rocket_name
-      }
-    }
-  }
-`;
-
 const Home: NextPage = () => {
-  const { loading, error, data } = useQuery(NEW_QUERY);
+  const { loading, error, data } = useQuery(LAUNCH_CARD_QUERY);
 
   if (error) return <>{"An error occured fetching data"}</>;
   if (loading) return <>{"Loading"}</>;
@@ -42,7 +23,7 @@ const Home: NextPage = () => {
 export const getStaticProps: GetStaticProps = async () => {
   const apolloClient = initializeApollo();
 
-  await apolloClient.query({ query: NEW_QUERY });
+  await apolloClient.query({ query: LAUNCH_CARD_QUERY });
 
   return {
     props: {},
